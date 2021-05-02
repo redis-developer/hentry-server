@@ -1,0 +1,10 @@
+server:
+  port: PORT
+
+database:
+  string: MONGO_URL
+
+cache:
+  host: REDIS_HOST
+  port: REDIS_PORT
+  enabled: CACHE_ENABLED

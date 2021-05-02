@@ -1,0 +1,45 @@
+name: 'Tests'
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Unit & E2E Tests
+    strategy:
+      matrix:
+        node-version: [14.x]
+        mongodb-version: [4.0]
+        redis-version: [4]
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Start MongoDB 
+        uses: supercharge/mongodb-github-action@1.3.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
+
+      - name: Start Redis
+        uses: supercharge/redis-github-action@1.2.0
+        with:
+          redis-version: ${{ matrix.redis-version }}
+
+      - name: installing dependencies
+        run: npm install
+
+      - name: running linting tests
+        run: npm run lint
+
+      - name: running tests
+        run: npm run coverage
+        env:
+          NODE_ENV: test
+
+      - name: upload coverage reports
+        run: npm run codecov 

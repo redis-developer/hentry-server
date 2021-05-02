@@ -1,0 +1,24 @@
+app:
+  name: hentry-server
+
+author:
+  name: Yash Kumar Verma
+  email: yk.verma2000@gmail.com
+  github: yashkumarverma
+
+server:
+  port: 3000
+
+database:
+  string: 'mongodb://127.0.0.1:27017/hentry'
+
+login_token:
+  secret: super-secret
+  expires: 1d
+  issuer: yashkumarverma
+  cookie: rbs_login
+
+cache:
+  host: '127.0.0.1'
+  port: 6379
+  enable: true
