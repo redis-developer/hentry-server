@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import { HttpExceptionTransformer } from 'http-exception-transformer'
 import { initializeRedis } from './services/redis'
+import { initializeRedisJSON } from './services/redis/reJSON'
 
 /** link all modules onto application */
 import TeamRoutes from './modules/team/routes'
@@ -10,6 +11,7 @@ import TeamRoutes from './modules/team/routes'
 
 /** initialize database connections */
 initializeRedis()
+initializeRedisJSON()
 // roleStatusCheck()
 
 /**

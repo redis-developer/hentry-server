@@ -29,6 +29,7 @@
     "mongoose": "^5.12.0",
     "morgan": "^1.10.0",
     "redis": "^3.0.2",
+    "redis-modules-sdk": "^0.5.2",
     "winston": "^3.3.3"
   },
   "devDependencies": {
