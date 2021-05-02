@@ -7,6 +7,7 @@ import { initializeRedisJSON } from './services/redis/reJSON'
 
 /** link all modules onto application */
 import TeamRoutes from './modules/team/routes'
+import DeviceRoutes from './modules/device/routes'
 // import { cookieDecoder } from './services/cookie/decoder'
 
 /** initialize database connections */
@@ -32,6 +33,7 @@ app.get('', (req, res) => {
   res.json({ alive: true })
 })
 app.use('/team', TeamRoutes)
+app.use('/device', DeviceRoutes)
 
 app.use(HttpExceptionTransformer)
 export default app

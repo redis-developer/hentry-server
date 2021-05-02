@@ -1,12 +1,4 @@
-/**
- * Representation of each client running on the network
- */
-export interface Device {
-  machineID: string
-  friendlyName: string
-  operatingSystem: 'windows' | 'unix'
-  frequency: number
-}
+import { Device } from '../device/interface'
 
 /**
  * Grouping of devices running together
