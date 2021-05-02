@@ -11,9 +11,9 @@ const initializeRedis = () => {
   client.set('status', 'server up')
   client.get('status', (err: any) => {
     if (err) {
-      logger.error('connection.redis.failed')
+      logger.error('connection.redis.generic.failed')
     } else {
-      logger.info('connection.redis.success')
+      logger.info('connection.redis.generic.success')
     }
   })
 }
