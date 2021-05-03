@@ -1,36 +1,26 @@
 version: '3'
 
 services:
-  # mongodb for main data storage
-  service_mongo:
-    image: mongo
-    container_name: db_mongo
-    command: --quiet --logpath /dev/null
-    volumes:
-      - ~/docker/mongo-volume:/data/db
-    ports:
-      - '27017:27017'
 
   # redis for backing cache service
   service_redis:
-    image: redis
+    image: redislabs/rejson:latest
     container_name: db_redis
     ports:
       - '6379:6379'
+    volumes:
+      - ~/docker/mongo-volume:/data/db
 
   #  main application stack
   hentry:
-    image: 'yashkumarverma/hentry'
+    image: 'yashkumarverma/hentry-server'
     container_name: hentry-server
     environment:
       REDIS_HOST: 'db_redis'
       REDIS_PORT: 6379
-      MONGO_URL: 'mongodb://db_mongo:27017'
       PORT: 80
-      CACHE_ENABLED: 'true'
     depends_on:
-      - service_mongo
       - service_redis
 
     ports:
-      - '80:80'
+      - '8000:80'
