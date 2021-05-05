@@ -93,7 +93,6 @@ class DeviceService {
         [JSON.stringify({ document })],
         'devices',
       )
-      console.log(teamQuery)
       return document
     }
 
