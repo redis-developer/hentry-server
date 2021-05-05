@@ -1,7 +1,8 @@
+import config from 'config'
 import app from './app'
 import { logger } from './services/logger/winston'
 
-const port = process.env.PORT || 3000
+const port = config.get('server.port') || 3000
 
 /**
  * Listen on port for requests

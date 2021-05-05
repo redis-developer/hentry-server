@@ -1,4 +1,5 @@
 import { NotFoundException, BadRequestException } from 'http-exception-transformer/exceptions'
+import { TeamService } from '../team/service'
 import { Device, CreateDeviceInterface } from './interface'
 import { DeviceService } from './service'
 
@@ -20,7 +21,12 @@ class DeviceController {
 
   /** to register a new device */
   public static async registerDevice(register: CreateDeviceInterface): Promise<Device | undefined> {
-    const { machineID } = register
+    const { machineID, teamId } = register
+    const teamDetails = await TeamService.findOneById(teamId)
+    if (teamDetails === undefined) {
+      throw new NotFoundException('team does not exist')
+    }
+
     const deviceDetails = await DeviceService.findOneById(machineID)
     if (deviceDetails !== undefined) {
       throw new BadRequestException('device already registered')
