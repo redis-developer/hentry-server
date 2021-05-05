@@ -90,7 +90,7 @@ class DeviceService {
       /** append information into team */
       const teamQuery = await jsonClient.arrappend(
         `team:${teamId}`,
-        [JSON.stringify({ id: machineID })],
+        [JSON.stringify({ document })],
         'devices',
       )
       console.log(teamQuery)
