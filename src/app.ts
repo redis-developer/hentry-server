@@ -4,16 +4,16 @@ import cookieParser from 'cookie-parser'
 import { HttpExceptionTransformer } from 'http-exception-transformer'
 import { initializeRedis } from './services/redis'
 import { initializeRedisJSON } from './services/redis/reJSON'
+import { initializeRedisTimeSeries } from './services/redis/timeSeries'
 
 /** link all modules onto application */
 import TeamRoutes from './modules/team/routes'
 import DeviceRoutes from './modules/device/routes'
-// import { cookieDecoder } from './services/cookie/decoder'
 
 /** initialize database connections */
 initializeRedis()
 initializeRedisJSON()
-// roleStatusCheck()
+initializeRedisTimeSeries()
 
 /**
  * Initialize express application to hook all middleware
@@ -27,7 +27,6 @@ app.use(
 )
 app.use(bodyParser.json())
 app.use(cookieParser())
-// app.use(cookieDecoder())
 
 app.get('', (req, res) => {
   res.json({ alive: true })
