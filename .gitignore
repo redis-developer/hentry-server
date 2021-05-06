@@ -6,6 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# hentry client
+hentry-client
+
 # local editor configs
 .vscode
 
