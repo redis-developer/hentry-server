@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint ./src/**/*.ts --fix",
     "build": "tsc",
-    "redis:json": "docker run -d -p 6379:6379 --name redis-redisjson redislabs/rejson:latest",
+    "redis:mod": "docker run -d -p 6379:6379 --name redis redislabs/redismod",
     "start:dev": "nodemon",
     "start:prod": "node ./dist/src/server.js",
     "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha --require ts-node/register --exit ./test/**/*.ts src/modules/**/*.spec.ts",
