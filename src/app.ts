@@ -9,6 +9,7 @@ import { initializeRedisTimeSeries } from './services/redis/timeSeries'
 /** link all modules onto application */
 import TeamRoutes from './modules/team/routes'
 import DeviceRoutes from './modules/device/routes'
+import TimeSeriesRoutes from './modules/timeseries/routes'
 
 /** initialize database connections */
 initializeRedis()
@@ -33,6 +34,7 @@ app.get('', (req, res) => {
 })
 app.use('/team', TeamRoutes)
 app.use('/device', DeviceRoutes)
+app.use('/timeseries', TimeSeriesRoutes)
 
 app.use(HttpExceptionTransformer)
 export default app
