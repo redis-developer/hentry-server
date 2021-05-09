@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
+import cors from "cors"
 import { HttpExceptionTransformer } from 'http-exception-transformer'
 import { initializeRedis } from './services/redis'
 import { initializeRedisJSON } from './services/redis/reJSON'
@@ -26,6 +27,7 @@ app.use(
     extended: true,
   }),
 )
+app.use(cors())
 app.use(bodyParser.json())
 app.use(cookieParser())
 
