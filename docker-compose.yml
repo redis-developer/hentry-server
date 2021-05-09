@@ -4,7 +4,7 @@ services:
 
   # redis for backing cache service
   service_redis:
-    image: redislabs/rejson:latest
+    image: redislabs/redismod:latest
     container_name: db_redis
     ports:
       - '6379:6379'
@@ -23,4 +23,4 @@ services:
       - service_redis
 
     ports:
-      - '8000:80'
+      - '80:80'
