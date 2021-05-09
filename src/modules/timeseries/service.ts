@@ -2,9 +2,12 @@ import { timeSeriesClient } from '../../services/redis/timeSeries'
 import { TimeRow } from './interface'
 
 class TimeSeriesService {
-  static async getAllById(machineID: string): Promise<Array<TimeRow>> {
+  static async getAllByIdTill(machineID: string, limit: string): Promise<Array<TimeRow>> {
     try {
-      const details = await timeSeriesClient.range(machineID, '0', `${Date.now()}`)
+      if (limit === 'now') {
+        limit = `${Date.now()}`
+      }
+      const details = await timeSeriesClient.range(machineID, '0', limit)
       return (details as unknown) as Promise<Array<TimeRow>>
     } catch (e) {
       return []

@@ -8,10 +8,10 @@ const router = express.Router()
 /**
  * to get all entries of a particular device by id
  */
-router.get('/:id', async (req: Request, res: Response) => {
-  const { id } = req.params
-  logger.info(`timeseries.find.${id}`)
-  const data = await TimeSeriesController.getAllEntries(id)
+router.get('/:id/:limit', async (req: Request, res: Response) => {
+  const { id, limit } = req.params
+  logger.info(`timeseries.find.${id}.till.${limit}`)
+  const data = await TimeSeriesController.getAllEntriesTill(id, limit)
   res.json(SuccessToResponseMapper(data))
 })
 

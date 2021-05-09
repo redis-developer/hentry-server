@@ -2,8 +2,8 @@ import { TimeRow } from './interface'
 import { TimeSeriesService } from './service'
 
 class TimeSeriesController {
-  static async getAllEntries(machineID: string): Promise<Array<TimeRow>> {
-    const response = await TimeSeriesService.getAllById(machineID)
+  static async getAllEntriesTill(machineID: string, limit: string): Promise<Array<TimeRow>> {
+    const response = await TimeSeriesService.getAllByIdTill(machineID, limit)
     return response
   }
 }
