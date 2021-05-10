@@ -15,8 +15,8 @@ services:
     image: 'yashkumarverma/hentry-feeder'
     container_name: 'hentry-feeder'
     environment:
-      PORT: 'db_redis:6379'
-      REDIS_URL: 80 
+      PORT: 80
+      REDIS_URL: 'db_redis:6379' 
     depends_on:
       - service_redis
     ports:
@@ -34,6 +34,5 @@ services:
       PORT: 80
     depends_on:
       - service_redis
-
     ports:
-      - '80:80'
+      - '8000:80'
