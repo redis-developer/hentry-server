@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-
   # redis for backing cache service
   service_redis:
     image: redislabs/redismod:latest
@@ -10,6 +9,16 @@ services:
       - '6379:6379'
     volumes:
       - ~/docker/mongo-volume:/data/db
+
+  # feeder micro-service to feed data into timeseries database
+  feeder:
+    image: 'yashkumarverma/hentry-feeder'
+    container_name: 'hentry-feeder'
+    environment:
+      PORT: 'db_redis:6379'
+      REDIS_URL: 80 
+    depends_on:
+      - service_redis
 
   #  main application stack
   hentry:
