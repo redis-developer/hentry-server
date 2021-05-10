@@ -19,6 +19,8 @@ services:
       REDIS_URL: 80 
     depends_on:
       - service_redis
+    ports:
+      - '9000:80'
 
   #  main application stack
   hentry:
