@@ -21,6 +21,8 @@ services:
       - service_redis
     ports:
       - '9000:80'
+    tty: true
+    stdin_open: true
 
   #  main application stack
   hentry:
