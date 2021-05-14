@@ -2,27 +2,22 @@ import { timeSeriesClient } from '../../services/redis/timeSeries'
 import { TimeRow } from './interface'
 
 class TimeSeriesService {
-  static async getAllEntropyEntriesTill(machineID: string, limit: string): Promise<Array<TimeRow>> {
+  static async getAllEntriesTill(slug: string, machineID: string, limit: string): Promise<Array<TimeRow>> {
     try {
       if (limit === 'now') {
         limit = `${Date.now()}`
       }
-      const details = await timeSeriesClient.range(`entropy:${machineID}`, '0', limit)
+      const details = await timeSeriesClient.range(`${slug}:${machineID}`, '0', limit)
       return (details as unknown) as Promise<Array<TimeRow>>
     } catch (e) {
       return []
     }
   }
 
-  static async getAllSnapshotEntriesTill(
-    machineID: string,
-    limit: string,
-  ): Promise<Array<TimeRow>> {
+  static async getPollingEntriesFrom(slug: string, machineID: string, from: string): Promise<Array<TimeRow>> {
     try {
-      if (limit === 'now') {
-        limit = `${Date.now()}`
-      }
-      const details = await timeSeriesClient.range(`snapshot:${machineID}`, '0', limit)
+      const limit = `${Date.now()}`
+      const details = await timeSeriesClient.range(`${slug}:${machineID}`, from, limit)
       return (details as unknown) as Promise<Array<TimeRow>>
     } catch (e) {
       return []
