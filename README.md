@@ -17,7 +17,7 @@ Hentry, is a hackathon sentry that allows organizers to provide a fair competing
 API Collection: [Here](https://documenter.getpostman.com/view/10043948/TzRLmqrE#intro)
 
 ## Architecture
-![Project Architecture]([illustrations/map.png](https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/map.png?token=ADLB4K4GEGXDW2OQHLIPK33AVE2II))
+![https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/map.png](https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/map.png
 
 ## Hentry Client
 
