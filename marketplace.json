@@ -1,0 +1,23 @@
+{
+  "app_name": "Hentry",
+  "description": "Provides a realtime monitoring system to watch over participation in online events to prevent plagiarism and re-use of projects.",
+  "hidden": true,
+  "type": "Building Block",
+  "contributed_by": "Yash Kumar Verma",
+  "repo_url": "https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs",
+  "download_url": "https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs/archive/main.zip",
+  "hosted_url": "",
+  "quick_deploy": "false",
+  "deploy_buttons": [],
+  "language": ["TypeScript", "Go"],
+  "redis_commands": ["JSON.SET", "JSON.GET", "TS.CREATE", "TS.ADD", "TS.RANGE"],
+  "redis_features": [],
+  "redis_modules": ["RediJSON", "RedisTimeseries"],
+  "app_image_urls": [
+    "https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs/blob/main/preview.png?raw=true"
+  ],
+  "youtube_url": "",
+  "special_tags": ["Hackathon"],
+  "verticals": ["Technology", "Education"],
+  "markdown": "https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/README.md"
+}
