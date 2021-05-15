@@ -83,24 +83,19 @@ Now the client will automatically calculate snapshot score and entropy of all di
 
 ![https://i.imgur.com/AFGOWdM.png](https://i.imgur.com/AFGOWdM.png)
 - main interface that is used by event organizers.
+- clean, minimal ui
+- option to search via team ID in landing page
 
-
-### Landing Page
 ![https://i.imgur.com/PebX7cQ.png](https://i.imgur.com/PebX7cQ.png)
 
-### Team Details Page
-shows the friendly name of each device in team, and also their platforms.
+- shows the friendly name of each device in team, and also their platforms.
 ![https://i.imgur.com/XOUdZYP.png](https://i.imgur.com/XOUdZYP.png)
 
-When a device a hovered, 
+- When a device a hovered 
 ![https://i.imgur.com/Nqp6ecN.png](https://i.imgur.com/Nqp6ecN.png)
 
-
-
-
-
-
-
+- opening the details of any device shows a live graph of project snapshot and entropy.
+- (refer video)
 
 
 ## Deployment
