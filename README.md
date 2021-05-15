@@ -20,6 +20,9 @@ Hentry, is a hackathon sentry that allows organizers to provide a fair competing
 
 API Collection: [Here](https://documenter.getpostman.com/view/10043948/TzRLmqrE#intro)
 
+## Architecture
+![Project Architecture](illustrations/map.png)
+
 ## User Interface
 
 ### Landing Page
@@ -60,6 +63,22 @@ Picks up device name by itself
 ![https://i.imgur.com/FHlHBha.png](https://i.imgur.com/FHlHBha.png)
 
 Now the client will automatically calculate snapshot score and entropy of all directories which are child of the directory in which hentry-client is present.
+
+
+## Hentry Server
+- Hentry Server is written in typescript with modern tooling to quickly prototype the application.
+- The server is available on docker hub as yashkumarverma[](https://hub.docker.com/repository/docker/yashkumarverma/hentry-server)/hentry-server
+- Connects to reddismod instance and ensures that connection with json and timeseries module is made.
+- Provides routes for team formation, team joining, device registration, fetching all timeseries data and polling for updates in timeseries data.
+- To run locally, run `yarn install` then `yarn start:dev` or use the docker image.
+- Follows a uniform logging scheme to make it easier to debug.
+- Supports keywords like `now` to fetch all data till the present timestamp.
+- Divided into modules and services keep related codebase together and therefore make it easier to maintain.
+- Configurations can be accessed in `config` directory.
+
+![https://i.imgur.com/9HEwswE.png](https://i.imgur.com/9HEwswE.png)
+![https://i.imgur.com/SqBM14v.png](https://i.imgur.com/SqBM14v.png)
+
 
 ## Deployment
 after running respective docker images, something like this should be accessible. or you can use the hosted docker images directly instead of building them manually.
