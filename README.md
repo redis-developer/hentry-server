@@ -5,16 +5,10 @@ Hentry, is a hackathon sentry that allows organizers to provide a fair competing
 
 ## Components
 
-![https://i.imgur.com/TlCaJbc.png](https://i.imgur.com/TlCaJbc.png)
 - [Hentry Server](https://github.com/YashKumarVerma/hentry-server) : web server written in TypeScript to act as the service to expose data for hentry-dashboards. Provides routes which utilize Redis-JSON and Redis-TimesSeries to return data for business logic. Handle user creation, team creation, initial dashboard data fetch and polling updates for live graphs.
-
-![https://i.imgur.com/hfATaxW.png](https://i.imgur.com/hfATaxW.png)
 - [Hentry Client](https://github.com/YashKumarVerma/hentry-client) : CLI written in Golang utilizing go-routines for performance ⚡ which calculates project entropy and snapshots and emits them to hentry-feeder
 
-![https://i.imgur.com/gXnIxAV.png](https://i.imgur.com/gXnIxAV.png)
 - [Hentry Feeder](https://github.com/YashKumarVerma/hentry-feeder) : micro service written in GoLang utilizing go-routines for performance, exposes a simple HTTP server to accept requests from henry-client instances running on participants' devices and write data to Redis TimeSeries Database.
-
-![https://i.imgur.com/AFGOWdM.png](https://i.imgur.com/AFGOWdM.png)
 -  [Hentry Dashboard](https://github.com/YashKumarVerma/hentry-dashboard) : a responsive and dynamic single page application build using React and TailWind CSS, designed in a monochrome and minimal UI to focus on important data. Also provisions realtime graphs which render live feed of project status.
 
 
@@ -23,20 +17,10 @@ API Collection: [Here](https://documenter.getpostman.com/view/10043948/TzRLmqrE#
 ## Architecture
 ![Project Architecture](illustrations/map.png)
 
-## User Interface
-
-### Landing Page
-![https://i.imgur.com/PebX7cQ.png](https://i.imgur.com/PebX7cQ.png)
-
-### Team Details Page
-shows the friendly name of each device in team, and also their platforms.
-![https://i.imgur.com/XOUdZYP.png](https://i.imgur.com/XOUdZYP.png)
-
-When a device a hovered, 
-![https://i.imgur.com/Nqp6ecN.png](https://i.imgur.com/Nqp6ecN.png)
-
-
 ## Hentry Client
+
+![https://i.imgur.com/hfATaxW.png](https://i.imgur.com/hfATaxW.png)
+
 - Generates a unique signature of each machine, used to uniquely identify machine.
 - Allows user to log into hentry servers, create and join teams, and register devices.
 - Can identity old devices and avoid duplicate logins, based on device signatures.
@@ -66,6 +50,9 @@ Now the client will automatically calculate snapshot score and entropy of all di
 
 
 ## Hentry Server
+
+![https://i.imgur.com/TlCaJbc.png](https://i.imgur.com/TlCaJbc.png)
+
 - Hentry Server is written in typescript with modern tooling to quickly prototype the application.
 - The server is available on docker hub as yashkumarverma[](https://hub.docker.com/repository/docker/yashkumarverma/hentry-server)/hentry-server
 - Connects to reddismod instance and ensures that connection with json and timeseries module is made.
@@ -78,6 +65,38 @@ Now the client will automatically calculate snapshot score and entropy of all di
 
 ![https://i.imgur.com/9HEwswE.png](https://i.imgur.com/9HEwswE.png)
 ![https://i.imgur.com/SqBM14v.png](https://i.imgur.com/SqBM14v.png)
+
+## Hentry Feeder
+
+![https://i.imgur.com/gXnIxAV.png](https://i.imgur.com/gXnIxAV.png)
+
+- Hentry feeder is a tiny microservice, designed to run in clusters depending upon the number of participants on the system.
+- Only purpose is to inject data received from the clients (hentry-client which can go upto thousands in number depending on event) into redis timeseries database.
+- To compile manually, run `make build` or compile `internal/main.go` for your architecture.
+- Also available as a docker container : [yashkumarverma/hentry-feeder](https://hub.docker.com/repository/docker/yashkumarverma/hentry-feeder)
+
+## Hentry Dashboard
+
+![https://i.imgur.com/AFGOWdM.png](https://i.imgur.com/AFGOWdM.png)
+- main interface that is used by event organizers.
+
+
+### Landing Page
+![https://i.imgur.com/PebX7cQ.png](https://i.imgur.com/PebX7cQ.png)
+
+### Team Details Page
+shows the friendly name of each device in team, and also their platforms.
+![https://i.imgur.com/XOUdZYP.png](https://i.imgur.com/XOUdZYP.png)
+
+When a device a hovered, 
+![https://i.imgur.com/Nqp6ecN.png](https://i.imgur.com/Nqp6ecN.png)
+
+
+
+
+
+
+
 
 
 ## Deployment
