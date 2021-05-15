@@ -1,4 +1,6 @@
-# Hentry Server
+# Hentry
+
+![https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/hentry-logo.png](https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/hentry-logo.png)
 
 Hentry, is a hackathon sentry that allows organizers to provide a fair competing platform in the online events. Since plagiarism and re-use are the major problems in such submissions which ruins the spirit of hackathons,  It utilizes intelligent algorithms to calculate project entropy and snapshots of participants' projects in real-time and visualizes the same for the organizers as a live graph in a pleasant user interface.
 
@@ -15,7 +17,7 @@ Hentry, is a hackathon sentry that allows organizers to provide a fair competing
 API Collection: [Here](https://documenter.getpostman.com/view/10043948/TzRLmqrE#intro)
 
 ## Architecture
-![Project Architecture](illustrations/map.png)
+![Project Architecture]([illustrations/map.png](https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/map.png?token=ADLB4K4GEGXDW2OQHLIPK33AVE2II))
 
 ## Hentry Client
 
