@@ -6,6 +6,9 @@
 
 Hentry, is a hackathon sentry that allows organizers to provide a fair competing platform in the online events. Since plagiarism and re-use are the major problems in such submissions which ruins the spirit of hackathons,  It utilizes intelligent algorithms to calculate project entropy and snapshots of participants' projects in real-time and visualizes the same for the organizers as a live graph in a pleasant user interface.
 
+Use live after reading the documentation for hentry-client
+- [hentry.surge.sh](http://hentry.surge.sh)
+
 
 ## Components
 
@@ -192,7 +195,20 @@ As the requests are being received, a uniform logging is also done. Tools like p
 - hentry dashboard is the main dashboard that is used by event organizers.
 - the dashboards is written using ReactJS, and TailwindCSS and uses [react-vis](https://uber.github.io/react-vis/) which in-turn is based on D3.
 - the dashboard is written in gatsby, in order to optimize the performance via service-size rendering, and suppose other awesome [features that gatsby provides](https://www.gatsbyjs.com/features).
+- Configurations:
+  - there are no configurations needed for the dashboard, when deploying, a single line configuration change is needed to point the dashboard to the API server.
 
+- Features
+  - Show team details
+  - Show team member details along-with their operating systems
+  - Completely responsive and runs smoothly on mobile. 
+  - View timeseries data in form of graph for snapshot values and entropy values
+  - LIVE feed from participant's devices.
+  - Click on any timestamp to compare other timestamps from that value.
+  - Use of colors to demonstrate additions, deletions and no changes.
+  - Please refer the demo for more:
+ 
+### Walkthrough
 
 ![https://i.imgur.com/PebX7cQ.png](https://i.imgur.com/PebX7cQ.png)
 
