@@ -77,41 +77,53 @@ API Collection: [Here](https://documenter.getpostman.com/view/10043948/TzRLmqrE#
 ### Walkthrough
 
 Launching without any configurations or admin rights:
+
 ![https://i.imgur.com/TVZFUHS.png](https://i.imgur.com/TVZFUHS.png)
 
 Validation of input in CLI, alongwith live status display with ✔️ and ✖️ depending on input
+
 ![https://i.imgur.com/NsGGv2Q.png](https://i.imgur.com/NsGGv2Q.png)
+
 
 ![https://i.imgur.com/9bEHQaH.png](https://i.imgur.com/9bEHQaH.png)
 
 Similar checks for Team Name
+
 ![https://i.imgur.com/T9JlE54.png](https://i.imgur.com/T9JlE54.png)
 
 `hentry-client` automatically checks if device is already registered or not. Since my device was not registered, it asks me to register
+
 ![https://i.imgur.com/pwSJntM.png](https://i.imgur.com/pwSJntM.png)
 
 Shows a success message when device is successfully registered.
+
 ![Device Registered](https://i.imgur.com/dgpnUnk.png)
 
 Starts transmitting data to `hentry-server`
+
 ![Events being transmitted](https://i.imgur.com/zkOBFOP.png)
 
 The above was a demo when user was not already in a team, what if wants to join a team and they're already registered?
 
 Joining a team with team ID, note that the input is masked.
+
 ![Joining a Team](https://i.imgur.com/rozDbtd.png)
 
 Thanks to unique device signatures, hentry client identifies that the device is already registered and automatically adds it to the said team, and starts data transmission
+
 ![Device attached to team](https://i.imgur.com/iOFqztN.png)
 
 Lets play around with the config file. Note that `hentry-client` shows a list of directories that it ignores during startup, and what if the server configs change? To handle such cases, use the **hentry.yaml** file. I use the following `hentry-config` file.
 
+
 ![https://i.imgur.com/ngzg8e1.png](https://i.imgur.com/ngzg8e1.png)
 
 Now when we run the `hentry-client`, we can see that the new configurations are loaded, and more directories are being ignored.
+
 ![https://i.imgur.com/zXs44zu.png](https://i.imgur.com/zXs44zu.png)
 
 Also since the **debug** flag was set to true, the client now logs all the api calls it makes.
+
 ![https://i.imgur.com/aawruiB.png](https://i.imgur.com/aawruiB.png)
 
 ## Hentry Server
@@ -169,22 +181,27 @@ As the requests are being received, a uniform logging is also done. Tools like p
   - Therefore this micro-service was written, so that it can be deployed in clusters depending on number of participants. The load is divided into the cluster, and each of this cluster (running the hentry-feeder image) can keep feeding the redis deployment.
   - This way we can make sure that our server is not the bottleneck for the infrastructure.
 - Also available as a docker container : [yashkumarverma/hentry-feeder](https://hub.docker.com/repository/docker/yashkumarverma/hentry-feeder)
+- Built utilizing **go-routines for ⚡ speed and concurrency**.
 - No fancy walk-through needed, pull the docker image, put the connection configurations as environment variables, attach it to a port, and BAM! it's up.
 - Detailed documentation about running clusters or docker pods can be found on the internet 🐼 
 
 ## Hentry Dashboard
 
 ![https://i.imgur.com/AFGOWdM.png](https://i.imgur.com/AFGOWdM.png)
-- main interface that is used by event organizers.
-- clean, minimal ui
-- option to search via team ID in landing page
+- Deployed on : [hentry.surge.sh](http://hentry.surge.sh/)
+- hentry dashboard is the main dashboard that is used by event organizers.
+- the dashboards is written using ReactJS, and TailwindCSS and uses [react-vis](https://uber.github.io/react-vis/) which in-turn is based on D3.
+- the dashboard is written in gatsby, in order to optimize the performance via service-size rendering, and suppose other awesome [features that gatsby provides](https://www.gatsbyjs.com/features).
+
 
 ![https://i.imgur.com/PebX7cQ.png](https://i.imgur.com/PebX7cQ.png)
 
 - shows the friendly name of each device in team, and also their platforms.
+
 ![https://i.imgur.com/XOUdZYP.png](https://i.imgur.com/XOUdZYP.png)
 
 - When a device a hovered 
+
 ![https://i.imgur.com/Nqp6ecN.png](https://i.imgur.com/Nqp6ecN.png)
 
 - opening the details of any device shows a live graph of project snapshot and entropy.
