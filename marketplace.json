@@ -4,8 +4,8 @@
   "hidden": true,
   "type": "Building Block",
   "contributed_by": "Yash Kumar Verma",
-  "repo_url": "https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs",
-  "download_url": "https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs/archive/main.zip",
+  "repo_url": "https://github.com/YashKumarVerma/hentry-server",
+  "download_url": "https://github.com/YashKumarVerma/hentry-server",
   "hosted_url": "",
   "quick_deploy": "false",
   "deploy_buttons": [],
@@ -14,7 +14,7 @@
   "redis_features": [],
   "redis_modules": ["RediJSON", "RedisTimeseries"],
   "app_image_urls": [
-    "https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs/blob/main/preview.png?raw=true"
+    "https://user-images.githubusercontent.com/14032427/118407740-a76e2180-b69f-11eb-9e09-6e7749e45789.png"
   ],
   "youtube_url": "https://youtu.be/yLw9LxwsgQ0",
   "special_tags": ["Hackathon"],
