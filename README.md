@@ -118,7 +118,7 @@ Also since the **debug** flag was set to true, the client now logs all the api c
 
 ![https://i.imgur.com/TlCaJbc.png](https://i.imgur.com/TlCaJbc.png)
 
-- Hentry Server is written in typescript with modern tooling to quickly prototype the application.
+- Hentry Server is written in typescript with modern tooling to quickly prototype and debug the application.
 - The server is available on docker hub as yashkumarverma[](https://hub.docker.com/repository/docker/yashkumarverma/hentry-server)/hentry-server
 - Connects to reddismod instance and ensures that connection with json and timeseries module is made.
 - Provides routes for team formation, team joining, device registration, fetching all timeseries data and polling for updates in timeseries data.
@@ -128,17 +128,49 @@ Also since the **debug** flag was set to true, the client now logs all the api c
 - Divided into modules and services keep related codebase together and therefore make it easier to maintain.
 - Configurations can be accessed in `config` directory.
 
-![https://i.imgur.com/9HEwswE.png](https://i.imgur.com/9HEwswE.png)
-![https://i.imgur.com/SqBM14v.png](https://i.imgur.com/SqBM14v.png)
+### Walkthrough
+Clone the project from the repository to your local machine and then install the dependencies.
+```
+git clone https://github.com/YashKumarVerma/hentry-server
+cd hentry-server
+yarn
+```
+
+Once the dependencies are installed, to run a development version with live changes and other fancy tooling, run
+```
+yarn start:dev
+```
+
+or if you want to built the package and then run it, run 
+```
+yarn build
+yarn start:prod
+```
+
+Since the server interacts with redis and operates on JSON and timeseries modules, make sure a docker container is running with the redismod image. To run the container, run
+```
+yarn redis:mod
+```
+
+![Package Running](https://i.imgur.com/6FtuuxT.png)
+
+As the requests are being received, a uniform logging is also done. Tools like pm2 can be used to accumulate logs and launch the application in clusters. For demonstration purposes, it's running on as docker container on the deployment machine.
+
+![Uniform Logging](https://i.imgur.com/GcdTFsD.png)
 
 ## Hentry Feeder
 
 ![https://i.imgur.com/gXnIxAV.png](https://i.imgur.com/gXnIxAV.png)
 
-- Hentry feeder is a tiny microservice, designed to run in clusters depending upon the number of participants on the system.
-- Only purpose is to inject data received from the clients (hentry-client which can go upto thousands in number depending on event) into redis timeseries database.
-- To compile manually, run `make build` or compile `internal/main.go` for your architecture.
+- **Aim** : to push high ingress entropy and snapshot scores into redis databases running timeseries module.
+- **Why this?**
+  - Since events can be massive, like hackathons with thousands of participants, and everyone transmitting events using `redis-client` means a lot of traffic.
+  - We're confident that redis can easily ingress this data, and managed services like redis enterprise can make sure that the database are always prepared for what-may-come, but one can use those features only if your server is not a bottleneck.
+  - Therefore this micro-service was written, so that it can be deployed in clusters depending on number of participants. The load is divided into the cluster, and each of this cluster (running the hentry-feeder image) can keep feeding the redis deployment.
+  - This way we can make sure that our server is not the bottleneck for the infrastructure.
 - Also available as a docker container : [yashkumarverma/hentry-feeder](https://hub.docker.com/repository/docker/yashkumarverma/hentry-feeder)
+- No fancy walk-through needed, pull the docker image, put the connection configurations as environment variables, attach it to a port, and BAM! it's up.
+- Detailed documentation about running clusters or docker pods can be found on the internet 🐼 
 
 ## Hentry Dashboard
 
