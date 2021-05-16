@@ -9,7 +9,8 @@ Hentry, is a hackathon sentry that allows organizers to provide a fair competing
 Use live after reading the documentation for hentry-client
 - [hentry.surge.sh](http://hentry.surge.sh)
 
-Video: [Demo Here](https://www.youtube.com/watch?v=yLw9LxwsgQ0)
+Short Video : [Overview Here](https://youtu.be/pEU7ToqsG-4)
+Long Video: [Demo Here](https://www.youtube.com/watch?v=yLw9LxwsgQ0)
 
 >Please check the video description for timestamps and a trimmed up TLDR version of the video.
 
