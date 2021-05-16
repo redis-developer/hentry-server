@@ -1,7 +1,7 @@
 # Hentry
 
 <p align="center">
-  <img width="460"  src="https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/hentry-logo.png">
+  <img width="460"  src="https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/hentry-logo.png?token=ADLB4KZZHZPB3MEDI3GRA63AVIDKI">
 </p>
 
 Hentry, is a hackathon sentry that allows organizers to provide a fair competing platform in the online events. Since plagiarism and re-use are the major problems in such submissions which ruins the spirit of hackathons,  It utilizes intelligent algorithms to calculate project entropy and snapshots of participants' projects in real-time and visualizes the same for the organizers as a live graph in a pleasant user interface.
@@ -19,39 +19,100 @@ Hentry, is a hackathon sentry that allows organizers to provide a fair competing
 API Collection: [Here](https://documenter.getpostman.com/view/10043948/TzRLmqrE#intro)
 
 ## Architecture
-![https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/map.png](https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/map.png)
+![Project Architecture](https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/map.png?token=ADLB4KYTBXCLY4N2QTW5J5TAVJJP2)
 
 ## Hentry Client
 
 ![https://i.imgur.com/hfATaxW.png](https://i.imgur.com/hfATaxW.png)
+- **The Binary**
+  - Can be compiled for any platform, any architecture as far as GoLang supports it. 
+  - Generates unique signature for each device, which cannot be altered by changing configurations or be spoofed. So single machine cannot act as multiple devices.
+  - Does **NOT** require admin privileges.
+  - Device signatures are hardware independent, as they can be easily spoofed by VMs. MAC and BIOS settings are also ignored as they can be easily manipulated.
+  - Automatically identifies the platform to display in the admin panel.
+  - A list of pre-compiled binaries is available on [hentry-client.surge.sh](http://hentry-client.surge.sh/). It is however recommended to compile for yourself as we're in early testing phase.
 
-- Generates a unique signature of each machine, used to uniquely identify machine.
-- Allows user to log into hentry servers, create and join teams, and register devices.
-- Can identity old devices and avoid duplicate logins, based on device signatures.
-- Interactive command line interface, with indicators showing validation results.
-- Written implementing go-routines, utilizes minimal system resources, non blocking.
-- Creates an internal directory mapping as hashmap and transmits data to hentry-server
-- Written in Golang, can be compiled for any operating system and architecture.
-- Deployment configurations embedded into binary, just run on terminal and use. If required, can pass data into binary for custom configurations.
-- Who uses this
-  - The participants of the event are supposed to place this in their project directory. That's all they are required to do.
-- Compiling Again?
-  - open hentry-client, then run `make build` and you'll get your binary in the `build folder`
-- ToDo
-  - add encryption to allow secure communication and no tampering of data.
+- **The Interface**
+  - Interactive command line interface with option to navigate using arrow keys and validation check indicators builtin. If the validation is about to fail, the terminal shows red with an error message and there's no need to work-up again and again.
+  - Secure TeamID Input : Since team IDs are used to join a team, the interface masks the input with `*` to add a layer of security in the user interface.
 
-User Interface
+- **Configuration**
+  - To make it effortless for users to use the application, server credentials can be embedded into the binary itself by the organizers (single point configuration declarations), and the participants can directly run the same.
+  - In case if there are changes in server deployments, or the organizers come up with alternative servers to relay the updates, a configuration file can be used to declare the endpoints.
+  - The configuration file should be named **hentry.yaml** and be placed in the same directory as the binary sits.
+  ```yml
+    app:
+      server: "https://some-fancy-server/api"
+      feeder: "https://some-fancy-server/feed"
+      debug: true
 
-![https://i.imgur.com/kJ68yQI.png](https://i.imgur.com/kJ68yQI.png)
-![https://i.imgur.com/qXyTdN7.png](https://i.imgur.com/qXyTdN7.png)
-![https://i.imgur.com/YqchQvD.png](https://i.imgur.com/YqchQvD.png)
+    ignore:
+      - "public"
+      - "cache"
+      - "build"
+      - "some-custom"
+  ```
+  - Restarting the client will first check if a configuration file is present. If its not, then display a message to ensure that the user knows, and go ahead to load the default configurations.
+  - **Ignore Custom Directories** : since there can by multiple directories which contain auto-generated codebase, depending on the tech stack being used, therefore there is a provision to list all of them in the config file in the **ignore** section. hentry would then ignore those directories while calculating snapshots and entropy.
 
-Picks up device name by itself
-![https://i.imgur.com/nVfna3p.png](https://i.imgur.com/nVfna3p.png)
-![https://i.imgur.com/FHlHBha.png](https://i.imgur.com/FHlHBha.png)
+- **Functionality**
+  - Allows user to create a team of people working together in an event / competition.
+  - Allows user to join an existing team 
+  - Allows user to register their device 
+  - Thanks to unique device signatures, can identity old devices and avoid duplicate logins.
+  - Walks through the project to calculate entropy and snapshot scores and feeds them to api servers.
 
-Now the client will automatically calculate snapshot score and entropy of all directories which are child of the directory in which hentry-client is present.
+- **Fancy Tech**
+  - Written implementing go-routines for concurrency ⚡ and speed, utilizes minimal system resources, non blocking.
+  - Recursively walks the the directory tree and creates a hashmap of the project in the memory.
+  - Calculates the snapshot score and entropy of all the files in each iteration.
+  - Snapshot score depends upon the file contents, length and size.
+  - Entropy is a name given to diff-match score, which is basically the number of insertions and deletions required to move from one state to another. 
+  - The entropy is calculated using the [golang port](https://pkg.go.dev/github.com/sergi/go-diff/diffmatchpatch) of [Neil Fraser's google-diff-match-patch](https://github.com/google/diff-match-patch) code 
+  - Written in Golang, can be compiled to native binary for any operating system and architecture.
+  
+- **Debug Mode**
+  - the **hentry,yaml** contains an option to enable the debug mode.
+  - This mode is added to help developers debug the deployments. Once its turned on, the binary will log all API request its sending and receiving.
+### Walkthrough
 
+Launching without any configurations or admin rights:
+![https://i.imgur.com/TVZFUHS.png](https://i.imgur.com/TVZFUHS.png)
+
+Validation of input in CLI, alongwith live status display with ✔️ and ✖️ depending on input
+![https://i.imgur.com/NsGGv2Q.png](https://i.imgur.com/NsGGv2Q.png)
+
+![https://i.imgur.com/9bEHQaH.png](https://i.imgur.com/9bEHQaH.png)
+
+Similar checks for Team Name
+![https://i.imgur.com/T9JlE54.png](https://i.imgur.com/T9JlE54.png)
+
+`hentry-client` automatically checks if device is already registered or not. Since my device was not registered, it asks me to register
+![https://i.imgur.com/pwSJntM.png](https://i.imgur.com/pwSJntM.png)
+
+Shows a success message when device is successfully registered.
+![Device Registered](https://i.imgur.com/dgpnUnk.png)
+
+Starts transmitting data to `hentry-server`
+![Events being transmitted](https://i.imgur.com/zkOBFOP.png)
+
+The above was a demo when user was not already in a team, what if wants to join a team and they're already registered?
+
+Joining a team with team ID, note that the input is masked.
+![Joining a Team](https://i.imgur.com/rozDbtd.png)
+
+Thanks to unique device signatures, hentry client identifies that the device is already registered and automatically adds it to the said team, and starts data transmission
+![Device attached to team](https://i.imgur.com/iOFqztN.png)
+
+Lets play around with the config file. Note that `hentry-client` shows a list of directories that it ignores during startup, and what if the server configs change? To handle such cases, use the **hentry.yaml** file. I use the following `hentry-config` file.
+
+![https://i.imgur.com/ngzg8e1.png](https://i.imgur.com/ngzg8e1.png)
+
+Now when we run the `hentry-client`, we can see that the new configurations are loaded, and more directories are being ignored.
+![https://i.imgur.com/zXs44zu.png](https://i.imgur.com/zXs44zu.png)
+
+Also since the **debug** flag was set to true, the client now logs all the api calls it makes.
+![https://i.imgur.com/aawruiB.png](https://i.imgur.com/aawruiB.png)
 
 ## Hentry Server
 
