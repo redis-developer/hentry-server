@@ -11,6 +11,7 @@ Use live after reading the documentation for hentry-client
 
 Video: [Demo Here](https://www.youtube.com/watch?v=yLw9LxwsgQ0)
 
+>Please check the video description for timestamps and a trimmed up TLDR version of the video.
 
 ## Components
 
