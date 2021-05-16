@@ -24,6 +24,12 @@ API Collection: [Here](https://documenter.getpostman.com/view/10043948/TzRLmqrE#
 ## Architecture
 ![Project Architecture](https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/map.png?token=ADLB4KYTBXCLY4N2QTW5J5TAVJJP2)
 
+
+Dashboard
+![https://i.imgur.com/NOlWUc5.png](https://i.imgur.com/NOlWUc5.png)
+
+![https://i.imgur.com/ox23m9A.png](https://i.imgur.com/ox23m9A.png)
+
 ## Hentry Client
 
 ![https://i.imgur.com/hfATaxW.png](https://i.imgur.com/hfATaxW.png)
