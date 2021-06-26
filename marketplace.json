@@ -1,14 +1,21 @@
 {
   "app_name": "Hentry",
-  "description": "Provides a realtime monitoring system to watch over participation in online events to prevent plagiarism and re-use of projects.",
-  "hidden": true,
-  "type": "Building Block",
-  "contributed_by": "Yash Kumar Verma",
-  "repo_url": "https://github.com/YashKumarVerma/hentry-server",
-  "download_url": "https://github.com/YashKumarVerma/hentry-server",
+  "description": "A Realtime Monitoring system to watch over participation in online events to prevent plagiarism and re-use of projects using RedisJSON + RedisTimeSeries",
+  "type": "Full App",
+  "contributed_by": "Community",
+  "repo_url": "https://github.com/redis-developer/hentry-server",
+  "download_url": "https://github.com/redis-developer/hentry-server",
   "hosted_url": "",
-  "quick_deploy": "false",
-  "deploy_buttons": [],
+  "quick_deploy": "true", 
+  "deploy_buttons": [
+        {
+            "heroku": "https://heroku.com/deploy?template=https://github.com/redis-developer/hentry-server.git" 
+        },
+        {
+            "Google": "https://deploy.cloud.run/?git_repo=https://github.com/redis-developer/hentry-server.git" 
+        }
+    ],
+    
   "language": ["TypeScript", "Go"],
   "redis_commands": ["JSON.SET", "JSON.GET", "TS.CREATE", "TS.ADD", "TS.RANGE"],
   "redis_features": [],
@@ -19,5 +26,5 @@
   "youtube_url": "https://youtu.be/yLw9LxwsgQ0",
   "special_tags": ["Hackathon"],
   "verticals": ["Technology", "Education"],
-  "markdown": "https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/README.md"
+  "markdown": "https://raw.githubusercontent.com/redis-developer/hentry-server/master/README.md"
 }
