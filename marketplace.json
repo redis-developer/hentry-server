@@ -19,7 +19,7 @@
   "language": ["TypeScript", "Go"],
   "redis_commands": ["JSON.SET", "JSON.GET", "TS.CREATE", "TS.ADD", "TS.RANGE"],
   "redis_features": [],
-  "redis_modules": ["RediJSON", "RedisTimeseries"],
+  "redis_modules": ["RedisJSON", "RedisTimeSeries"],
   "app_image_urls": [
     "https://user-images.githubusercontent.com/14032427/118407740-a76e2180-b69f-11eb-9e09-6e7749e45789.png"
   ],
