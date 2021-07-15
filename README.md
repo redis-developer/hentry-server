@@ -154,10 +154,11 @@ Also since the **debug** flag was set to true, the client now logs all the api c
 - Divided into modules and services keep related codebase together and therefore make it easier to maintain.
 - Configurations can be accessed in `config` directory.
 
-### Walkthrough
+### Installation
+
 Clone the project from the repository to your local machine and then install the dependencies.
 ```
-git clone https://github.com/YashKumarVerma/hentry-server
+git clone https://github.com/redis-developer/hentry-server
 cd hentry-server
 yarn
 ```
@@ -235,11 +236,4 @@ As the requests are being received, a uniform logging is also done. Tools like p
 - (refer video)
 
 
-## Deployment
-after running respective docker images, something like this should be accessible. or you can use the hosted docker images directly instead of building them manually.
 
-The images are
-- yashkumarverma/hentry-server
-- yashkumarverma/hentry-feeder
-- redismod
-![https://i.imgur.com/aGDxRG1.png](https://i.imgur.com/aGDxRG1.png)
