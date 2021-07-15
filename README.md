@@ -6,8 +6,7 @@
 
 Hentry, is a hackathon sentry that allows organizers to provide a fair competing platform in the online events. Since plagiarism and re-use are the major problems in such submissions which ruins the spirit of hackathons,  It utilizes intelligent algorithms to calculate project entropy and snapshots of participants' projects in real-time and visualizes the same for the organizers as a live graph in a pleasant user interface.
 
-Use live after reading the documentation for hentry-client
-- [hentry.surge.sh](http://hentry.surge.sh)
+
 
 Short Video : [Overview Here](https://youtu.be/pEU7ToqsG-4)
 
@@ -17,17 +16,17 @@ Long Video: [Demo Here](https://www.youtube.com/watch?v=yLw9LxwsgQ0)
 
 ## Components
 
-- [Hentry Server](https://github.com/YashKumarVerma/hentry-server) : web server written in TypeScript to act as the service to expose data for hentry-dashboards. Provides routes which utilize Redis-JSON and Redis-TimesSeries to return data for business logic. Handle user creation, team creation, initial dashboard data fetch and polling updates for live graphs.
-- [Hentry Client](https://github.com/YashKumarVerma/hentry-client) : CLI written in Golang utilizing go-routines for performance ⚡ which calculates project entropy and snapshots and emits them to hentry-feeder
+- [Hentry Server](https://github.com/redis-developer/hentry-server) : web server written in TypeScript to act as the service to expose data for hentry-dashboards. Provides routes which utilize Redis-JSON and Redis-TimesSeries to return data for business logic. Handle user creation, team creation, initial dashboard data fetch and polling updates for live graphs.
+- [Hentry Client](https://github.com/redis-developer/hentry-client) : CLI written in Golang utilizing go-routines for performance ⚡ which calculates project entropy and snapshots and emits them to hentry-feeder
 
-- [Hentry Feeder](https://github.com/YashKumarVerma/hentry-feeder) : micro service written in GoLang utilizing go-routines for performance, exposes a simple HTTP server to accept requests from henry-client instances running on participants' devices and write data to Redis TimeSeries Database.
--  [Hentry Dashboard](https://github.com/YashKumarVerma/hentry-dashboard) : a responsive and dynamic single page application build using React and TailWind CSS, designed in a monochrome and minimal UI to focus on important data. Also provisions realtime graphs which render live feed of project status.
+- [Hentry Feeder](https://github.com/redis-developer/hentry-feeder) : micro service written in GoLang utilizing go-routines for performance, exposes a simple HTTP server to accept requests from henry-client instances running on participants' devices and write data to Redis TimeSeries Database.
+-  [Hentry Dashboard](https://github.com/redis-developer/hentry-dashboard) : a responsive and dynamic single page application build using React and TailWind CSS, designed in a monochrome and minimal UI to focus on important data. Also provisions realtime graphs which render live feed of project status.
 
 
 API Collection: [Here](https://documenter.getpostman.com/view/10043948/TzRLmqrE#intro)
 
 ## Architecture
-![Project Architecture](https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/map.png?token=ADLB4KYTBXCLY4N2QTW5J5TAVJJP2)
+![Project Architecture](https://raw.githubusercontent.com/redis-developer/hentry-server/master/illustrations/map.png?token=ADLB4KYTBXCLY4N2QTW5J5TAVJJP2)
 
 
 Dashboard
