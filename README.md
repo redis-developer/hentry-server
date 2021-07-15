@@ -144,7 +144,6 @@ Also since the **debug** flag was set to true, the client now logs all the api c
 ![https://i.imgur.com/TlCaJbc.png](https://i.imgur.com/TlCaJbc.png)
 
 - Hentry Server is written in typescript with modern tooling to quickly prototype and debug the application.
-- The server is available on docker hub as yashkumarverma[](https://hub.docker.com/repository/docker/yashkumarverma/hentry-server)/hentry-server
 - Connects to reddismod instance and ensures that connection with json and timeseries module is made.
 - Provides routes for team formation, team joining, device registration, fetching all timeseries data and polling for updates in timeseries data.
 - To run locally, run `yarn install` then `yarn start:dev` or use the docker image.
