@@ -6,7 +6,7 @@
   "repo_url": "https://github.com/redis-developer/hentry-server",
   "download_url": "https://github.com/redis-developer/hentry-server",
   "hosted_url": "",
-  "quick_deploy": "true", 
+  "quick_deploy": "false", 
   "deploy_buttons": [
         {
             "heroku": "https://heroku.com/deploy?template=https://github.com/redis-developer/hentry-server.git" 
