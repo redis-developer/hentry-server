@@ -3,6 +3,7 @@
   "description": "A Realtime Monitoring system to watch over participation in online events to prevent plagiarism and re-use of projects using RedisJSON + RedisTimeSeries",
   "type": "Full App",
   "contributed_by": "Community",
+  "rank": 103,
   "repo_url": "https://github.com/redis-developer/hentry-server",
   "preview_image_url": "https://raw.githubusercontent.com/redis-developer/hentry-server/master/images/app_preview_image.png",
   "download_url": "https://github.com/redis-developer/hentry-server",
