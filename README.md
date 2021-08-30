@@ -1,16 +1,15 @@
 # Hentry
 
 <p align="center">
-  <img width="460"  src="https://raw.githubusercontent.com/YashKumarVerma/hentry-server/master/illustrations/hentry-logo.png?token=ADLB4KZZHZPB3MEDI3GRA63AVIDKI">
+  <img width="460"  src="https://raw.githubusercontent.com/redis-developer/hentry-server/master/illustrations/hentry-logo.png?token=ADLB4KZZHZPB3MEDI3GRA63AVIDKI">
 </p>
 
 Hentry, is a hackathon sentry that allows organizers to provide a fair competing platform in the online events. Since plagiarism and re-use are the major problems in such submissions which ruins the spirit of hackathons,  It utilizes intelligent algorithms to calculate project entropy and snapshots of participants' projects in real-time and visualizes the same for the organizers as a live graph in a pleasant user interface.
 
 
 
-Short Video : [Overview Here](https://youtu.be/pEU7ToqsG-4)
+Short Video : [Overview Here](https://www.youtube.com/watch?v=m9kO_2w9VL4)
 
-Long Video: [Demo Here](https://www.youtube.com/watch?v=yLw9LxwsgQ0)
 
 >Please check the video description for timestamps and a trimmed up TLDR version of the video.
 
